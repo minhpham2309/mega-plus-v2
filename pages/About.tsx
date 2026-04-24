@@ -24,7 +24,7 @@ const About: React.FC = () => {
             </section>
 
             {/* Vision & Mission Section - Full Screen Zig Zag */}
-            <section className="min-h-screen flex flex-col justify-center py-20 bg-[#FDF8EB] transition-colors duration-300 overflow-hidden">
+            <section className="min-h-screen flex flex-col justify-center py-20 bg-[#354A35] transition-colors duration-300 overflow-hidden">
                 <div className="container mx-auto px-4 md:px-6">
                     <div className="grid lg:grid-cols-2 gap-16 lg:gap-24 items-center">
                         <AnimatedSection type="slide-left">
@@ -43,20 +43,20 @@ const About: React.FC = () => {
 
                         <AnimatedSection type="slide-right" delay={200}>
                             <div className="flex gap-6 md:gap-8 h-full">
-                                <div className="w-1 md:w-1.5 bg-[#D9612C] shrink-0 self-stretch rounded-full"></div>
+                                <div className="w-1 md:w-1.5 bg-[#D4B872] shrink-0 self-stretch rounded-full"></div>
                                 <div className="flex flex-col justify-center">
-                                    <h2 className="text-4xl md:text-5xl uppercase font-black text-[#3A332A] mb-6">
+                                    <h2 className="text-4xl md:text-5xl uppercase font-black text-white mb-6">
                                         {t('about.vision_title')}
                                     </h2>
-                                    <p className="text-lg text-[#6D655A] mb-8 leading-relaxed text-justify md:text-left">
+                                    <p className="text-lg text-gray-200 mb-8 leading-relaxed text-justify md:text-left">
                                         {t('about.vision_desc')}
                                     </p>
                                     
-                                    <h3 className="text-2xl uppercase font-bold text-[#3A332A] mb-4 flex items-center">
+                                    <h3 className="text-2xl uppercase font-bold text-white mb-4 flex items-center">
                                          <span className="w-2 h-2 bg-[#D9612C] rounded-full mr-3"></span>
                                         {t('about.mission_title')}
                                     </h3>
-                                    <ul className="space-y-3 text-lg text-[#6D655A]">
+                                    <ul className="space-y-3 text-lg text-gray-200">
                                         {[1, 2, 3, 4].map((i) => (
                                             <li key={i} className="flex items-start">
                                                 <svg className="w-5 h-5 text-[#D9612C] mt-1 mr-3 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
