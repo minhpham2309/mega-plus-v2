@@ -752,7 +752,9 @@ const Services: React.FC = () => {
                     </div>
                 </section>
             )}
-             {!selectedService && <Partners />}
+
+            {/* Partners Section */}
+            <Partners />
         </div>
     );
 };
