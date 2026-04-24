@@ -1,0 +1,125 @@
+import React from 'react';
+import { Leaf, Globe, Award, Users, CheckCircle2, ArrowRight, ShieldCheck } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import AnimatedSection from '../../ui/AnimatedSection';
+import { useLanguage } from '../../../contexts/LanguageContext';
+
+const AboutSection: React.FC = () => {
+  const { t } = useLanguage();
+
+  return (
+    <section className="py-24 bg-white relative overflow-hidden">
+      <div className="container mx-auto px-6 lg:px-12">
+        <div className="flex flex-col lg:flex-row items-center gap-16">
+          
+          {/* Left: Bento Box */}
+          <div className="w-full lg:w-1/2 relative">
+            <div className="grid grid-cols-2 gap-4 relative z-10">
+              {/* Card 1 */}
+              <AnimatedSection type="scale" delay={100}>
+                <div className="bg-[#D1F4E0] rounded-3xl p-8 flex flex-col items-center justify-center text-center aspect-square transform transition-transform hover:-translate-y-2 duration-300">
+                  <div className="w-14 h-14 bg-[#16A34A] rounded-2xl flex items-center justify-center mb-4 text-white">
+                    <Leaf className="w-7 h-7" />
+                  </div>
+                  <span className="text-[#0A3A20] font-bold">{t('home.about_us_card_1')}</span>
+                </div>
+              </AnimatedSection>
+              
+              {/* Card 2 */}
+              <AnimatedSection type="scale" delay={300}>
+                <div className="bg-[#16A34A] rounded-3xl p-8 flex flex-col items-center justify-center text-center aspect-square transform transition-transform hover:-translate-y-2 duration-300 translate-y-8">
+                  <div className="w-14 h-14 bg-white/20 rounded-2xl flex items-center justify-center mb-4 text-white backdrop-blur-sm">
+                    <Globe className="w-7 h-7" />
+                  </div>
+                  <span className="text-white font-bold">{t('home.about_us_card_2')}</span>
+                </div>
+              </AnimatedSection>
+              
+              {/* Card 3 */}
+              <AnimatedSection type="scale" delay={200}>
+                <div className="bg-[#FEF08A] rounded-3xl p-8 flex flex-col items-center justify-center text-center aspect-square transform transition-transform hover:-translate-y-2 duration-300">
+                  <div className="w-14 h-14 bg-[#F59E0B] rounded-2xl flex items-center justify-center mb-4 text-white">
+                    <Award className="w-7 h-7" />
+                  </div>
+                  <span className="text-[#854D0E] font-bold">{t('home.about_us_card_3')}</span>
+                </div>
+              </AnimatedSection>
+              
+              {/* Card 4 */}
+              <AnimatedSection type="scale" delay={400}>
+                <div className="bg-gray-50 rounded-3xl p-8 flex flex-col items-center justify-center text-center aspect-square transform transition-transform hover:-translate-y-2 duration-300 translate-y-8 shadow-sm border border-gray-100">
+                  <div className="w-14 h-14 bg-[#D1F4E0] rounded-2xl flex items-center justify-center mb-4 text-[#16A34A]">
+                    <Users className="w-7 h-7" />
+                  </div>
+                  <span className="text-gray-800 font-bold">{t('home.about_us_card_4')}</span>
+                </div>
+              </AnimatedSection>
+            </div>
+
+            {/* Overlapping Pill */}
+            <AnimatedSection type="fade-in" delay={600} className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-20 mt-4">
+              <div className="bg-[#F59E0B] text-black font-bold px-6 py-3 rounded-full shadow-xl flex items-center gap-2 whitespace-nowrap border-4 border-white">
+                <ShieldCheck className="w-5 h-5" />
+                {t('home.about_us_trusted')}
+              </div>
+            </AnimatedSection>
+            
+            {/* Background Glow */}
+            <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full h-full bg-[#D1F4E0]/50 blur-[100px] -z-10 rounded-full"></div>
+          </div>
+
+          {/* Right: Content */}
+          <div className="w-full lg:w-1/2">
+            <AnimatedSection type="slide-right">
+              <div className="flex items-center gap-4 mb-4">
+                <div className="w-12 h-px bg-[#16A34A]"></div>
+                <span className="text-[#16A34A] font-bold tracking-widest uppercase text-sm">{t('home.about_us_badge')}</span>
+              </div>
+              
+              <h2 className="text-4xl lg:text-5xl font-bold text-[#0A3A20] mb-6 leading-tight" dangerouslySetInnerHTML={{ __html: t('home.about_us_title') }} />
+              
+              <p className="text-gray-600 mb-6 text-lg">
+                {t('home.about_us_desc_1')}
+              </p>
+              
+              <p className="text-gray-500 mb-10">
+                {t('home.about_us_desc_2')}
+              </p>
+            </AnimatedSection>
+            
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-10">
+              {[
+                { title: t('home.about_us_feature_1_title'), desc: t('home.about_us_feature_1_desc') },
+                { title: t('home.about_us_feature_2_title'), desc: t('home.about_us_feature_2_desc') },
+                { title: t('home.about_us_feature_3_title'), desc: t('home.about_us_feature_3_desc') },
+                { title: t('home.about_us_feature_4_title'), desc: t('home.about_us_feature_4_desc') }
+              ].map((item, idx) => (
+                <AnimatedSection key={idx} type="fade-up" delay={idx * 100}>
+                  <div className="flex gap-4">
+                    <div className="w-10 h-10 rounded-full bg-[#D1F4E0] flex items-center justify-center flex-shrink-0 mt-1">
+                      <CheckCircle2 className="w-5 h-5 text-[#16A34A]" />
+                    </div>
+                    <div>
+                      <h4 className="text-[#0A3A20] font-bold mb-1">{item.title}</h4>
+                      <p className="text-sm text-gray-500">{item.desc}</p>
+                    </div>
+                  </div>
+                </AnimatedSection>
+              ))}
+            </div>
+            
+            <AnimatedSection type="fade-in" delay={500}>
+              <Link to="/about" className="inline-flex items-center text-[#16A34A] font-bold hover:text-[#0A3A20] transition-colors group">
+                {t('home.about_us_read_more')}
+                <ArrowRight className="w-5 h-5 ml-2 transform group-hover:translate-x-1 transition-transform" />
+              </Link>
+            </AnimatedSection>
+          </div>
+          
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default AboutSection;

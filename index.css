@@ -1,0 +1,127 @@
+@import "tailwindcss";
+
+@theme {
+  --color-fastway-orange: #F59E0B;
+  --color-fastway-dark: #022c22;
+  --color-fastway-dark-blue: #0A3A20;
+  --color-text-main: #1F2937;
+  --color-text-sub: #6B7280;
+
+  --font-sans: 'Inter', sans-serif;
+  --font-secondary: 'Montserrat', sans-serif;
+  --font-serif: 'Playfair Display', ui-serif, Georgia, Cambria, 'Times New Roman', Times, serif;
+
+  --animate-blink-border: blink-border 0.75s step-end infinite;
+  --animate-scroll-left: scroll-left 40s linear infinite;
+  --animate-scroll-right: scroll-right 40s linear infinite;
+
+  @keyframes blink-border {
+    50% { border-color: transparent }
+  }
+  @keyframes scroll-left {
+    0% { transform: translateX(0) }
+    100% { transform: translateX(-50%) }
+  }
+  @keyframes scroll-right {
+    0% { transform: translateX(-50%) }
+    100% { transform: translateX(0) }
+  }
+}
+
+/* 
+  Main stylesheet
+  Note: Tailwind is now compiled via Vite and PostCSS.
+*/
+body {
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #0A3A20; /* Match bg-white */
+  overflow-x: hidden;
+}
+
+/* --- CUSTOM CURSOR & SELECTION (UI Polish) --- */
+/* Using URL Encoded SVG for better compatibility with filters */
+body, 
+a, 
+button, 
+[role="button"], 
+input, 
+select, 
+textarea,
+.cursor-hover {
+  cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='28' viewBox='0 0 28 28' fill='none'%3E%3Cg filter='url(%23filter0_d_4807_6489)'%3E%3Cpath d='M5 3H14C18.9706 3 23 7.02944 23 12V12C23 16.9706 18.9706 21 14 21V21C9.02944 21 5 16.9706 5 12V3Z' fill='%23FFFF00'/%3E%3Cpath d='M5 3H14C18.9706 3 23 7.02944 23 12V12C23 16.9706 18.9706 21 14 21V21C9.02944 21 5 16.9706 5 12V3Z' stroke='%23161616' stroke-width='2'/%3E%3C/g%3E%3Cdefs%3E%3Cfilter id='filter0_d_4807_6489' x='0' y='0' width='28' height='28' filterUnits='userSpaceOnUse' color-interpolation-filters='sRGB'%3E%3CfeFlood flood-opacity='0' result='BackgroundImageFix'/%3E%3CfeColorMatrix in='SourceAlpha' type='matrix' values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0' result='hardAlpha'/%3E%3CfeOffset dy='2'/%3E%3CfeGaussianBlur stdDeviation='2'/%3E%3CfeColorMatrix type='matrix' values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0'/%3E%3CfeBlend mode='normal' in2='BackgroundImageFix' result='effect1_dropShadow_4807_6489'/%3E%3CfeBlend mode='normal' in='SourceGraphic' in2='effect1_dropShadow_4807_6489' result='shape'/%3E%3C/filter%3E%3C/defs%3E%3C/svg%3E") 5 3, auto !important;
+}
+
+::selection {
+  background-color: #FFFF00;
+  color: #000000;
+}
+
+::-moz-selection {
+  background-color: #FFFF00;
+  color: #000000;
+}
+
+/* --- CINEMATIC NOISE GRAIN --- */
+.noise-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 9998;
+  opacity: 0.05;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+}
+
+/* --- KINETIC TYPOGRAPHY UTILS --- */
+.char {
+  display: inline-block;
+  will-change: transform, opacity;
+  transform-style: preserve-3d;
+}
+
+.word {
+  display: inline-block;
+  white-space: nowrap;
+}
+
+/* --- LIQUID IMAGE UTILS --- */
+.liquid-img-wrapper {
+  overflow: hidden;
+  will-change: transform;
+}
+
+.liquid-img {
+  will-change: transform;
+  transform-origin: center center;
+}
+
+/* --- UTILITIES --- */
+.clip-text-container {
+  overflow: hidden;
+  display: inline-block;
+  vertical-align: bottom;
+}
+
+.perspective-container {
+  perspective: 1000px;
+}
+
+.will-change-transform {
+  will-change: transform, opacity;
+}
+
+/* Hide scrollbar for cleaner reveal if needed, though Lenis handles this well */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #0A3A20; 
+}
+::-webkit-scrollbar-thumb {
+  background: #F59E0B; 
+  border-radius: 4px;
+}
