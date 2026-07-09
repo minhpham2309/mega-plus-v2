@@ -35,9 +35,9 @@ const ContactSection: React.FC = () => {
           {/* Left: Contact Info */}
           <div className="w-full lg:w-1/3 space-y-6">
             {[
-              { icon: MapPin, title: 'Head Office', desc: <>123 Agricultural District<br />Ho Chi Minh City, Vietnam</> },
-              { icon: Mail, title: 'Email Us', desc: <>info@megaplusagri.vn<br />sales@megaplusagri.vn</> },
-              { icon: Phone, title: 'Call Us', desc: <>+84 28 1234 5678<br />+84 28 8765 4321</> },
+              { icon: MapPin, title: 'Head Office', desc: <>55 Bis Nguyen Van Thu, Tan Dinh Ward<br />Ho Chi Minh City, Vietnam</> },
+              { icon: Mail, title: 'Email Us', desc: <><a href="mailto:info@megaplusvn.com" className="hover:underline">info@megaplusvn.com</a><br /><a href="mailto:sales@megaplusvn.com" className="hover:underline">sales@megaplusvn.com</a></> },
+              { icon: Phone, title: 'Call Us', desc: <><a href="tel:+84707793068" className="hover:underline">+84 707793068</a><br /><a href="tel:+84708697920" className="hover:underline">+84 708697920</a></> },
               { icon: Clock, title: 'Business Hours', desc: <>Mon - Fri: 8:00 AM - 6:00 PM<br />Sat: 8:00 AM - 12:00 PM</> }
             ].map((item, idx) => (
               <AnimatedSection key={idx} type="slide-left" delay={idx * 100}>

@@ -52,8 +52,8 @@ const Contact: React.FC = () => {
                                         <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" /><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
                                     </div>
                                     <div>
-                                        <h4 className="font-bold text-text-main dark:text-white uppercase tracking-wider">Address</h4>
-                                        <p className="text-gray-600 dark:text-gray-400">55Bis Nguyen Van Thu, Tan Dinh Ward, Ho Chi Minh City</p>
+                                        <h4 className="font-bold text-text-main dark:text-white uppercase tracking-wider">{t('contact.office_label')}</h4>
+                                        <p className="text-gray-600 dark:text-gray-400">{t('contact.office_val')}</p>
                                     </div>
                                 </div>
                                 <div className="flex items-start">
@@ -61,8 +61,23 @@ const Contact: React.FC = () => {
                                         <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" /></svg>
                                     </div>
                                     <div>
-                                        <h4 className="font-bold text-text-main dark:text-white uppercase tracking-wider">Phone</h4>
-                                        <p className="text-gray-600 dark:text-gray-400">0708697920</p>
+                                        <h4 className="font-bold text-text-main dark:text-white uppercase tracking-wider">{t('contact.phone_label')}</h4>
+                                        <p className="text-gray-600 dark:text-gray-400">
+                                            <a href="tel:+84707793068" className="hover:underline block">+84 707793068</a>
+                                            <a href="tel:+84708697920" className="hover:underline block">+84 708697920</a>
+                                        </p>
+                                    </div>
+                                </div>
+                                <div className="flex items-start">
+                                    <div className="w-12 h-12 rounded-full bg-emerald-100 dark:bg-emerald-900/30 flex items-center justify-center text-emerald-600 mr-4 shrink-0">
+                                        <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>
+                                    </div>
+                                    <div>
+                                        <h4 className="font-bold text-text-main dark:text-white uppercase tracking-wider">{t('contact.email_label')}</h4>
+                                        <p className="text-gray-600 dark:text-gray-400">
+                                            <a href="mailto:info@megaplusvn.com" className="hover:underline block">info@megaplusvn.com</a>
+                                            <a href="mailto:sales@megaplusvn.com" className="hover:underline block">sales@megaplusvn.com</a>
+                                        </p>
                                     </div>
                                 </div>
                             </div>
@@ -118,7 +133,7 @@ const Contact: React.FC = () => {
                                     <Magnetic strength={0.4}>
                                         <button
                                             type="submit"
-                                            className="w-full bg-fastway-dark-blue text-white font-bold py-5 rounded-xl hover:bg-gray-800 transition-all duration-300 text-lg uppercase tracking-wider shadow-lg hover:shadow-xl"
+                                            className="w-full bg-fastway-dark-blue text-white font-bold py-4 px-8 rounded-xl hover:bg-opacity-90 transition-all duration-300 text-lg uppercase tracking-wider shadow-lg hover:shadow-xl border border-transparent focus:outline-none focus:ring-2 focus:ring-fastway-orange"
                                         >
                                             {t('common.submit_request')}
                                         </button>

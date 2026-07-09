@@ -1,11 +1,43 @@
 import React from 'react';
-import { Send } from 'lucide-react';
+import { Send, MapPin, Mail, Phone, Clock } from 'lucide-react';
 import AnimatedSection from '../../ui/AnimatedSection';
-import { contactInfo } from '../../../constants/data';
 import { useLanguage } from '../../../contexts/LanguageContext';
 
 const ContactSection: React.FC = () => {
   const { t } = useLanguage();
+
+  const contactInfoList = [
+    { 
+      icon: MapPin, 
+      title: t('contact.office_label'), 
+      desc: t('contact.office_val') 
+    },
+    { 
+      icon: Mail, 
+      title: t('contact.email_label'), 
+      desc: (
+        <span className="block">
+          <a href="mailto:info@megaplusvn.com" className="hover:underline block">info@megaplusvn.com</a>
+          <a href="mailto:sales@megaplusvn.com" className="hover:underline block">sales@megaplusvn.com</a>
+        </span>
+      )
+    },
+    { 
+      icon: Phone, 
+      title: t('contact.phone_label'), 
+      desc: (
+        <span className="block">
+          <a href="tel:+84707793068" className="hover:underline block">+84 707793068</a>
+          <a href="tel:+84708697920" className="hover:underline block">+84 708697920</a>
+        </span>
+      )
+    },
+    { 
+      icon: Clock, 
+      title: t('contact.hours_label'), 
+      desc: t('contact.hours_val') 
+    }
+  ];
 
   return (
     <section className="py-24 bg-gray-50 relative overflow-hidden">
@@ -36,7 +68,7 @@ const ContactSection: React.FC = () => {
           
           {/* Left: Contact Info */}
           <div className="w-full lg:w-1/3 space-y-6">
-            {contactInfo.map((item, idx) => (
+            {contactInfoList.map((item, idx) => (
               <AnimatedSection key={idx} type="slide-left" delay={idx * 100}>
                 <div className="bg-white rounded-3xl p-8 shadow-sm border border-gray-100 flex items-start gap-6 hover:shadow-md transition-shadow">
                   <div className="w-12 h-12 rounded-2xl bg-[#F0FDF4] flex items-center justify-center flex-shrink-0 text-[#16A34A]">
@@ -44,9 +76,9 @@ const ContactSection: React.FC = () => {
                   </div>
                   <div>
                     <h4 className="text-[#0A3A20] font-bold mb-2">{item.title}</h4>
-                    <p className="text-gray-500 text-sm leading-relaxed whitespace-pre-line">
+                    <div className="text-gray-500 text-sm leading-relaxed whitespace-pre-line">
                       {item.desc}
-                    </p>
+                    </div>
                   </div>
                 </div>
               </AnimatedSection>

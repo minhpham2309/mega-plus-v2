@@ -1,7 +1,9 @@
 import React from 'react';
+import { Leaf, ShieldCheck, Globe, Users } from 'lucide-react';
 import AnimatedSection from '../components/ui/AnimatedSection';
 import { useLanguage } from '../contexts/LanguageContext';
 import Magnetic from '../components/ui/Magnetic';
+import aboutusBg from '@/assets/about-us-background.png';
 
 const About: React.FC = () => {
     const { t } = useLanguage();
@@ -9,17 +11,87 @@ const About: React.FC = () => {
     return (
         <div className="overflow-x-hidden bg-transparent">
             {/* Banner */}
-            <section className="relative h-screen flex flex-col justify-center items-center overflow-hidden bg-cover bg-center" style={{ backgroundImage: "url('https://picsum.photos/1920/1080?grayscale&blur=2&random=99')" }}>
-                <div className="absolute inset-0 bg-fastway-dark-blue/80 mix-blend-multiply"></div>
-                <div className="relative z-10 flex flex-col justify-center items-center text-center text-white px-4 max-w-5xl mx-auto">
+            <section className="relative min-h-screen pt-32 pb-24 flex flex-col justify-center items-center overflow-hidden bg-cover bg-center" style={{ backgroundImage: `url(${aboutusBg})` }}>
+                {/* Background Gradient Overlays for maximum visibility and text legibility */}
+                <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/25 to-emerald-950/90"></div>
+                
+                <div className="relative z-10 flex flex-col justify-center items-center text-center text-white px-6 w-full max-w-6xl mx-auto">
                     <AnimatedSection type="scale" duration={1.5}>
-                        <h1 className="text-4xl md:text-6xl lg:text-[80px] font-extrabold mb-8 leading-[1.1] uppercase drop-shadow-2xl">
+                        <h1 className="text-4xl sm:text-6xl lg:text-[72px] font-black mb-4 tracking-wider uppercase text-white drop-shadow-2xl">
                             {t('about.banner_title')}
                         </h1>
                     </AnimatedSection>
-                    <p className="text-xl md:text-2xl font-light italic max-w-4xl mx-auto text-gray-200 leading-relaxed">
-                        {t('about.banner_desc')}
-                    </p>
+                    
+                    {/* Elegant Leaf Divider */}
+                    <AnimatedSection type="fade-in" delay={300}>
+                        <div className="flex items-center justify-center gap-4 my-6 w-full max-w-xs mx-auto">
+                            <div className="h-[1px] bg-emerald-400/50 flex-grow"></div>
+                            <Leaf className="w-5 h-5 text-emerald-400 fill-emerald-400/20" />
+                            <div className="h-[1px] bg-emerald-400/50 flex-grow"></div>
+                        </div>
+                    </AnimatedSection>
+
+                    {/* Description */}
+                    <AnimatedSection type="fade-in" delay={500}>
+                        <p className="text-base sm:text-lg md:text-xl font-normal text-gray-200 max-w-4xl mx-auto leading-relaxed mb-16 drop-shadow-md">
+                            {t('about.banner_desc')}
+                        </p>
+                    </AnimatedSection>
+
+                    {/* 4 Pillars Grid */}
+                    <div className="grid grid-cols-2 lg:grid-cols-4 gap-y-12 gap-x-0 w-full max-w-5xl mx-auto mt-4">
+                        {/* Pillar 1 */}
+                        <AnimatedSection type="fade-up" delay={600} className="flex flex-col items-center text-center px-6">
+                            <div className="w-16 h-16 rounded-full bg-emerald-950/60 border border-emerald-500/40 flex items-center justify-center mb-4 text-emerald-400 shadow-xl shadow-emerald-950/50 backdrop-blur-sm transform hover:scale-105 transition-transform duration-300">
+                                <Leaf className="w-7 h-7" />
+                            </div>
+                            <h3 className="text-white font-bold text-sm tracking-wider uppercase mb-2">
+                                {t('about.pillar_1_title')}
+                            </h3>
+                            <p className="text-xs text-gray-300 leading-relaxed max-w-[200px]">
+                                {t('about.pillar_1_desc')}
+                            </p>
+                        </AnimatedSection>
+
+                        {/* Pillar 2 */}
+                        <AnimatedSection type="fade-up" delay={700} className="flex flex-col items-center text-center px-6 border-l border-white/10">
+                            <div className="w-16 h-16 rounded-full bg-emerald-950/60 border border-emerald-500/40 flex items-center justify-center mb-4 text-emerald-400 shadow-xl shadow-emerald-950/50 backdrop-blur-sm transform hover:scale-105 transition-transform duration-300">
+                                <ShieldCheck className="w-7 h-7" />
+                            </div>
+                            <h3 className="text-white font-bold text-sm tracking-wider uppercase mb-2">
+                                {t('about.pillar_2_title')}
+                            </h3>
+                            <p className="text-xs text-gray-300 leading-relaxed max-w-[200px]">
+                                {t('about.pillar_2_desc')}
+                            </p>
+                        </AnimatedSection>
+
+                        {/* Pillar 3 */}
+                        <AnimatedSection type="fade-up" delay={800} className="flex flex-col items-center text-center px-6 lg:border-l lg:border-white/10">
+                            <div className="w-16 h-16 rounded-full bg-emerald-950/60 border border-emerald-500/40 flex items-center justify-center mb-4 text-emerald-400 shadow-xl shadow-emerald-950/50 backdrop-blur-sm transform hover:scale-105 transition-transform duration-300">
+                                <Globe className="w-7 h-7" />
+                            </div>
+                            <h3 className="text-white font-bold text-sm tracking-wider uppercase mb-2">
+                                {t('about.pillar_3_title')}
+                            </h3>
+                            <p className="text-xs text-gray-300 leading-relaxed max-w-[200px]">
+                                {t('about.pillar_3_desc')}
+                            </p>
+                        </AnimatedSection>
+
+                        {/* Pillar 4 */}
+                        <AnimatedSection type="fade-up" delay={900} className="flex flex-col items-center text-center px-6 border-l border-white/10">
+                            <div className="w-16 h-16 rounded-full bg-emerald-950/60 border border-emerald-500/40 flex items-center justify-center mb-4 text-emerald-400 shadow-xl shadow-emerald-950/50 backdrop-blur-sm transform hover:scale-105 transition-transform duration-300">
+                                <Users className="w-7 h-7" />
+                            </div>
+                            <h3 className="text-white font-bold text-sm tracking-wider uppercase mb-2">
+                                {t('about.pillar_4_title')}
+                            </h3>
+                            <p className="text-xs text-gray-300 leading-relaxed max-w-[200px]">
+                                {t('about.pillar_4_desc')}
+                            </p>
+                        </AnimatedSection>
+                    </div>
                 </div>
             </section>
 

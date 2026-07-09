@@ -106,9 +106,9 @@ export const partnerLogos = [
 ];
 
 export const contactInfo = [
-  { icon: MapPin, title: 'Head Office', desc: '123 Agricultural District\nHo Chi Minh City, Vietnam' },
-  { icon: Mail, title: 'Email Us', desc: 'info@megaplusagri.vn\nsales@megaplusagri.vn' },
-  { icon: Phone, title: 'Call Us', desc: '+84 28 1234 5678\n+84 28 8765 4321' },
+  { icon: MapPin, title: 'Head Office', desc: '55 Bis Nguyen Van Thu, Tan Dinh Ward\nHo Chi Minh City, Vietnam' },
+  { icon: Mail, title: 'Email Us', desc: 'info@megaplusvn.com\nsales@megaplusvn.com' },
+  { icon: Phone, title: 'Call Us', desc: '+84 707793068\n+84 708697920' },
   { icon: Clock, title: 'Business Hours', desc: 'Mon - Fri: 8:00 AM - 6:00 PM\nSat: 8:00 AM - 12:00 PM' }
 ];
 

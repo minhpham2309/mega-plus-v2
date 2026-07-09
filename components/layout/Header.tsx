@@ -181,17 +181,10 @@ const Header: React.FC = () => {
                   </NavLink>
                </Magnetic>
                {/* Dropdown Menu */}
-               <div className="absolute top-full left-1/2 -translate-x-1/2 pt-2 w-[450px] opacity-0 invisible group-hover/services:opacity-100 group-hover/services:visible transition-all duration-300 z-50 pointer-events-none group-hover/services:pointer-events-auto">
+               <div className="absolute top-full left-1/2 -translate-x-1/2 pt-2 w-[320px] opacity-0 invisible group-hover/services:opacity-100 group-hover/services:visible transition-all duration-300 z-50 pointer-events-none group-hover/services:pointer-events-auto">
                    <div className="bg-[#0A3A20] backdrop-blur-md border border-white/10 rounded-2xl shadow-2xl flex overflow-hidden text-left">
-                       {/* Left Brand Panel */}
-                       <div className="w-1/3 bg-[#16A34A] p-6 flex flex-col items-center justify-center relative overflow-hidden">
-                           <div className="absolute inset-0 bg-gradient-to-br from-[#16A34A] to-[#15803D]"></div>
-                           <h2 className="relative z-10 text-xl font-black text-white uppercase tracking-widest text-shadow-md -rotate-90 md:rotate-0 text-center">
-                               {t('nav.services').toUpperCase()}
-                           </h2>
-                       </div>
                        {/* Right Links Panel */}
-                       <div className="w-2/3 p-6 flex flex-col">
+                       <div className="w-full p-6 flex flex-col">
                            {servicesDropdownData.filter(category => category.id === 'logistics').map((category) => (
                                <div key={category.id} className="flex-1 w-full">
                                    <h3 className="text-[#F59E0B] font-bold text-sm uppercase tracking-wider mb-4 border-b border-white/10 pb-2">
@@ -217,12 +210,6 @@ const Header: React.FC = () => {
                    </div>
                </div>
            </div>
-           <Magnetic strength={0.25}>
-              <NavLink to="/quality" className={({ isActive }) => `${linkClass} ${isActive ? activeLinkClass : ''}`}>
-                {t('nav.quality')}
-                <span className="absolute bottom-1 left-1/2 -translate-x-1/2 w-0 h-0.5 bg-[#F59E0B] transition-all duration-300 group-hover:w-1/2"></span>
-              </NavLink>
-           </Magnetic>
            <Magnetic strength={0.25}>
               <NavLink to="/contact" className={({ isActive }) => `${linkClass} ${isActive ? activeLinkClass : ''}`}>
                 {t('nav.contact')}
@@ -285,9 +272,8 @@ const Header: React.FC = () => {
                 { to: "/about", label: t('nav.company'), num: '02' },
                 { to: "/products", label: t('nav.products'), num: '03' },
                 { to: "/services", label: t('nav.services'), num: '04' },
-                { to: "/quality", label: t('nav.quality'), num: '05' },
-                { to: "/contact", label: t('nav.contact'), num: '06' },
-                { to: "/quote", label: t('nav.quote'), num: '07' }
+                { to: "/contact", label: t('nav.contact'), num: '05' },
+                { to: "/quote", label: t('nav.quote'), num: '06' }
               ].map((item) => (
                 <NavLink 
                   key={item.to}

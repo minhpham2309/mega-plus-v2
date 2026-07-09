@@ -9,7 +9,7 @@ import Contact from './pages/Contact';
 import About from './pages/About';
 import WhoWeServe from './pages/WhoWeServe';
 import Products from './pages/Products';
-import Quality from './pages/Quality';
+
 import Quote from './pages/Quote';
 import { LanguageProvider } from './contexts/LanguageContext';
 import SmoothScrollLayout from './components/layout/SmoothScrollLayout';
@@ -29,7 +29,7 @@ const AppContent: React.FC = () => {
             <Route path="/about" element={<About />} />
             <Route path="/who-we-serve" element={<WhoWeServe />} />
             <Route path="/products" element={<Products />} />
-            <Route path="/quality" element={<Quality />} />
+
             <Route path="/quote" element={<Quote />} />
           </Routes>
       </main>
@@ -42,8 +42,8 @@ const App: React.FC = () => {
   return (
     <LanguageProvider>
       <HashRouter>
-        {/* Grain Overlay - Topmost Z-Index */}
-        <div className="noise-overlay" />
+
+
         
         {/* Living Background - Lowest Z-Index */}
         <LivingBackground />

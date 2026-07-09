@@ -1,5 +1,16 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
+import { 
+  Leaf, 
+  ArrowRight,
+  Globe, 
+  Package, 
+  TrendingUp, 
+  Settings, 
+  ShieldCheck, 
+  Award, 
+  Users 
+} from 'lucide-react';
 import Partners from '../components/sections/home/Partners';
 import { useLanguage } from '../contexts/LanguageContext';
 import AnimatedSection from '../components/ui/AnimatedSection';
@@ -39,9 +50,9 @@ const ServiceCard: React.FC<{ icon: React.ReactNode, title: string, description:
 );
 
 const heroImages = [
-    "https://picsum.photos/1920/1080?grayscale&blur=2",
-    "https://img.freepik.com/free-photo/container-ship-import-export-business-logistics-shipping-cargo-freight-transportation-concept_1150-17937.jpg?w=1380", 
-    "https://img.freepik.com/free-photo/aerial-view-container-cargo-ship-sea_335224-718.jpg?w=1380"
+    "https://images.unsplash.com/photo-1578575437130-527eed3abbec?auto=format&fit=crop&q=80&w=1920",
+    "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&q=80&w=1920", 
+    "https://images.unsplash.com/photo-1494412519320-aa613dfb7738?auto=format&fit=crop&q=80&w=1920"
 ];
 
 // These images must match the ones rendered in the sections below
@@ -261,7 +272,7 @@ const ServiceDetail: React.FC<{ serviceId: string, onBack: () => void }> = ({ se
 };
 
 const Services: React.FC = () => {
-    const { t } = useLanguage();
+    const { t, language } = useLanguage();
     const [searchParams, setSearchParams] = useSearchParams();
     const selectedService = searchParams.get('id');
 
@@ -277,6 +288,109 @@ const Services: React.FC = () => {
     const containerRef = useRef<HTMLDivElement>(null);
     const heroRef = useRef<HTMLDivElement>(null);
     const overlayRef = useRef<HTMLDivElement>(null);
+
+    const heroContent = {
+        en: {
+            badge: "MEGAPLUS SOLUTIONS",
+            title: "Services",
+            desc: "Our global logistics expertise, advanced supply chain technology & customized logistics solutions will help you analyze, develop and implement successful supply chain management strategies.",
+            btnText: "View All Categories",
+            categories: [
+                {
+                    icon: Globe,
+                    title: "Global Logistics",
+                    desc: "Worldwide transportation and freight solutions."
+                },
+                {
+                    icon: Package,
+                    title: "Supply Chain Solutions",
+                    desc: "End-to-end supply chain design and optimization."
+                },
+                {
+                    icon: TrendingUp,
+                    title: "Consulting & Strategy",
+                    desc: "Data-driven insights to build resilient supply chains."
+                },
+                {
+                    icon: Settings,
+                    title: "Technology & Integration",
+                    desc: "Smart systems and real-time visibility for better control."
+                }
+            ],
+            features: [
+                {
+                    icon: ShieldCheck,
+                    title: "Reliable",
+                    desc: "On-time delivery"
+                },
+                {
+                    icon: Award,
+                    title: "Quality Assured",
+                    desc: "Highest standards"
+                },
+                {
+                    icon: Users,
+                    title: "Expert Team",
+                    desc: "Industry specialists"
+                },
+                {
+                    icon: Leaf,
+                    title: "Sustainable",
+                    desc: "Committed to a better future"
+                }
+            ]
+        },
+        vi: {
+            badge: "GIẢI PHÁP MEGAPLUS",
+            title: "Dịch vụ",
+            desc: "Chuyên môn logistics toàn cầu, công nghệ chuỗi cung ứng tiên tiến & các giải pháp logistics tùy biến của chúng tôi sẽ giúp bạn phân tích, phát triển và thực thi các chiến lược quản lý chuỗi cung ứng thành công.",
+            btnText: "Xem Tất Cả Danh Mục",
+            categories: [
+                {
+                    icon: Globe,
+                    title: "Logistics Toàn Cầu",
+                    desc: "Giải pháp vận chuyển và giao nhận hàng hóa trên toàn thế giới."
+                },
+                {
+                    icon: Package,
+                    title: "Giải Pháp Chuỗi Cung Ứng",
+                    desc: "Thiết kế và tối ưu hóa chuỗi cung ứng toàn diện."
+                },
+                {
+                    icon: TrendingUp,
+                    title: "Tư Vấn & Chiến Lược",
+                    desc: "Thông tin dựa trên dữ liệu để xây dựng chuỗi cung ứng bền bỉ."
+                },
+                {
+                    icon: Settings,
+                    title: "Công Nghệ & Tích Hợp",
+                    desc: "Hệ thống thông minh và khả năng hiển thị thời gian thực để kiểm soát tốt hơn."
+                }
+            ],
+            features: [
+                {
+                    icon: ShieldCheck,
+                    title: "Đáng Tin Cậy",
+                    desc: "Giao hàng đúng hẹn"
+                },
+                {
+                    icon: Award,
+                    title: "Đảm Bảo Chất Lượng",
+                    desc: "Tiêu chuẩn cao nhất"
+                },
+                {
+                    icon: Users,
+                    title: "Đội Ngũ Chuyên Gia",
+                    desc: "Chuyên gia hàng đầu"
+                },
+                {
+                    icon: Leaf,
+                    title: "Bền Vững",
+                    desc: "Cam kết vì tương lai xanh"
+                }
+            ]
+        }
+    }[language === 'vi' ? 'vi' : 'en'];
 
     // --- ORCHESTRATED ANIMATION SEQUENCE ---
     useGSAP(() => {
@@ -329,40 +443,119 @@ const Services: React.FC = () => {
     return (
         <div ref={containerRef} className="overflow-x-hidden min-h-screen bg-transparent transition-colors duration-300">
             {!selectedService && (
-                <section ref={heroRef} className="relative h-screen flex flex-col justify-center items-center overflow-hidden">
-                    <div ref={overlayRef} className="absolute bottom-0 left-0 w-full h-full bg-[#0A3A20] z-50 pointer-events-none"></div>
+                <section ref={heroRef} className="relative min-h-screen py-24 md:py-32 flex flex-col justify-center items-center overflow-hidden bg-[#021208]">
+                    <div ref={overlayRef} className="absolute bottom-0 left-0 w-full h-full bg-[#021208] z-50 pointer-events-none"></div>
+                    {/* Background Overlays & Theme Graphics matching Home Services Section */}
                     <div className="absolute inset-0 z-0">
-                        {heroImages.map((img, index) => (
-                            <div 
-                                key={index}
-                                className={`hero-bg-img absolute inset-0 bg-cover bg-center transition-opacity duration-[2000ms] ease-in-out ${index === currentImageIndex ? 'opacity-100' : 'opacity-0'}`}
-                                style={{ backgroundImage: `url('${img}')` }}
+                        {/* World Map Overlay on the left */}
+                        <div 
+                            className="absolute inset-0 z-0 opacity-15 pointer-events-none bg-no-repeat bg-left md:block hidden"
+                            style={{ 
+                                backgroundImage: "url('https://www.transparenttextures.com/patterns/world-map.png')",
+                                backgroundSize: 'contain',
+                                width: '50%'
+                            }}
+                        ></div>
+
+                        {/* Grid Pattern Overlay */}
+                        <div 
+                            className="absolute inset-0 opacity-5 pointer-events-none" 
+                            style={{ backgroundImage: 'linear-gradient(#22C55E 1px, transparent 1px), linear-gradient(90deg, #22C55E 1px, transparent 1px)', backgroundSize: '40px 40px' }}
+                        ></div>
+
+                        {/* Cargo Ship & Port Image on the right with smooth fade-out gradient */}
+                        <div className="absolute top-0 right-0 w-full md:w-[55%] h-full z-0 opacity-25 pointer-events-none md:block hidden">
+                            <div className="absolute inset-0 bg-gradient-to-r from-[#021208] via-[#021208]/60 to-transparent z-10"></div>
+                            <img 
+                                src="https://images.unsplash.com/photo-1578575437130-527eed3abbec?auto=format&fit=crop&q=80&w=1200" 
+                                alt="Cargo Port"
+                                className="hero-bg-img w-full h-full object-cover mix-blend-luminosity"
                             />
-                        ))}
-                        <div className="absolute inset-0 bg-[#0A3A20]/70 backdrop-blur-sm"></div>
+                        </div>
                     </div>
                     
-                    <div className="hero-text-container relative text-center text-white z-10 px-4 w-full max-w-6xl mx-auto flex flex-col items-center">
-                        <div className="hero-content mb-6">
-                            <span className="inline-block py-1 px-3 border border-white/20 rounded-full bg-white/10 backdrop-blur-md text-white text-sm font-bold tracking-[0.2em] uppercase mb-4 shadow-sm">
-                                Megaplus Solutions
-                            </span>
+                    <div className="hero-text-container relative text-center text-white z-10 px-4 w-full max-w-7xl mx-auto flex flex-col items-center">
+                        {/* Solutions Badge */}
+                        <div className="hero-content mb-4">
+                            <div className="inline-flex items-center gap-2 px-6 py-1.5 rounded-full border border-green-500/30 bg-[#062414]/90 backdrop-blur-md">
+                                <span className="text-white text-xs font-semibold uppercase tracking-[0.25em]">{heroContent.badge}</span>
+                            </div>
                         </div>
-                        <h1 className="text-4xl md:text-6xl lg:text-[80px] font-extrabold mb-8 leading-[1.1] drop-shadow-2xl">
+                        {/* Services Heading */}
+                        <h1 className="text-5xl md:text-7xl lg:text-[80px] font-extrabold mb-4 tracking-tight drop-shadow-2xl">
                             <KineticText>{t('nav.services')}</KineticText>
                         </h1>
-                        <div className="hero-content flex flex-col items-center gap-6 max-w-2xl">
-                             <p className="text-lg md:text-xl text-gray-300 font-medium leading-relaxed">
-                                {t('services.intro_desc')}
+                        
+                        {/* Dual Leaf Branch Underline Symbol */}
+                        <div className="flex items-center justify-center gap-4 mb-8">
+                            <div className="w-16 h-[1px] bg-gradient-to-r from-transparent to-green-500"></div>
+                            <div className="flex items-center text-green-400">
+                                <Leaf className="w-5 h-5 rotate-[-15deg] transform shrink-0" />
+                                <Leaf className="w-5 h-5 rotate-[15deg] transform -ml-2 shrink-0" />
+                            </div>
+                            <div className="w-16 h-[1px] bg-gradient-to-l from-transparent to-green-500"></div>
+                        </div>
+                        <div className="hero-content flex flex-col items-center gap-6 max-w-4xl">
+                             <p className="text-lg md:text-xl text-gray-300 font-medium leading-relaxed max-w-2xl">
+                                {heroContent.desc}
                              </p>
                              <Magnetic strength={0.4}>
                                  <div className="mt-4 group relative inline-block">
-                                    <div className="absolute -inset-1 bg-gradient-to-r from-fastway-orange to-amber-400 rounded-full blur opacity-25 group-hover:opacity-75 transition duration-1000 group-hover:duration-200"></div>
-                                    <button onClick={handleExploreClick} className="relative px-8 py-4 bg-transparent border border-white/20 text-white font-bold rounded-full text-lg tracking-wide hover:bg-white/10 transition-all cursor-pointer">
-                                        View All Categories
-                                    </button>
+                                     <button 
+                                        onClick={handleExploreClick} 
+                                        className="inline-flex items-center gap-3 px-8 py-3 bg-[#062414]/40 hover:bg-green-500/10 text-white font-medium rounded-full border border-green-500/50 hover:border-green-400 transition-all duration-300 cursor-pointer shadow-lg"
+                                     >
+                                        <span>{heroContent.btnText}</span>
+                                        <ArrowRight className="w-4 h-4 text-green-400" />
+                                     </button>
                                  </div>
                              </Magnetic>
+                        </div>
+
+                        {/* Categories Grid */}
+                        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-0 w-full mt-20 max-w-7xl">
+                            {heroContent.categories.map((cat, index) => {
+                                const IconComp = cat.icon;
+                                return (
+                                    <div 
+                                        key={index} 
+                                        className={`flex flex-col items-center text-center px-6 ${
+                                            index > 0 ? 'lg:border-l lg:border-green-500/20' : ''
+                                        }`}
+                                    >
+                                        <div className="w-20 h-20 rounded-full border border-green-500/40 flex items-center justify-center text-green-400 bg-[#062414]/30 mb-6 hover:border-green-400 hover:bg-green-500/10 transition-all duration-300">
+                                            <IconComp className="w-8 h-8" />
+                                        </div>
+                                        <h3 className="text-white text-xl font-bold mb-3">{cat.title}</h3>
+                                        <p className="text-gray-400 text-sm max-w-[260px] leading-relaxed">{cat.desc}</p>
+                                    </div>
+                                );
+                            })}
+                        </div>
+
+                        {/* Bottom Features Pill Container */}
+                        <div className="w-full max-w-7xl mt-20 p-6 md:py-8 md:px-10 rounded-2xl border border-green-500/20 bg-[#062414]/30 backdrop-blur-sm">
+                            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-0">
+                                {heroContent.features.map((feat, index) => {
+                                    const IconComp = feat.icon;
+                                    return (
+                                        <div 
+                                            key={index} 
+                                            className={`flex items-center gap-4 px-6 ${
+                                                index > 0 ? 'lg:border-l lg:border-green-500/20' : ''
+                                            }`}
+                                        >
+                                            <div className="text-green-400 shrink-0">
+                                                <IconComp className="w-8 h-8" />
+                                            </div>
+                                            <div className="text-left">
+                                                <h4 className="text-white font-bold text-sm uppercase tracking-wider">{feat.title}</h4>
+                                                <p className="text-gray-400 text-xs mt-0.5">{feat.desc}</p>
+                                            </div>
+                                        </div>
+                                    );
+                                })}
+                            </div>
                         </div>
                     </div>
                 </section>
@@ -465,42 +658,6 @@ const Services: React.FC = () => {
                                 <AnimatedSection type="skew-up" delay={150}><ServiceCard icon={<OceanFreightIcon />} title={t('home.service_ocean_title')} description={t('home.service_ocean_desc')} /></AnimatedSection>
                                 <AnimatedSection type="skew-up" delay={300}><ServiceCard icon={<TrackingIcon />} title={t('home.service_road_title')} description={t('home.service_road_desc')} /></AnimatedSection>
                             </div>
-                        </div>
-                    </section>
-
-                    {/* Recent Articles */}
-                    <section className="py-20 md:py-28 bg-[#0A3A20]/60 transition-colors duration-300">
-                        <div className="container mx-auto px-4 md:px-6 text-center">
-                            <AnimatedSection type="fade-up">
-                                <div>
-                                    <h2 className="text-3xl md:text-5xl uppercase font-bold text-white mt-2 mb-6">{t('home.articles_title')}</h2>
-                                    <p className="text-gray-300 max-w-2xl mx-auto mb-12 text-lg">{t('home.articles_desc')}</p>
-                                </div>
-                            </AnimatedSection>
-                            <div className="grid md:grid-cols-3 gap-8 text-left">
-                                {[1, 2, 3].map((i) => (
-                                    <AnimatedSection key={i} delay={i * 150} type="fade-up">
-                                        <div className="bg-white/5 rounded-xl overflow-hidden shadow-xl transform hover:-translate-y-3 transition-all duration-500 h-full flex flex-col group cursor-hover border border-white/10">
-                                            <div className="overflow-hidden h-56 relative liquid-img-wrapper">
-                                                <div className="absolute inset-0 bg-fastway-orange/20 opacity-0 group-hover:opacity-100 transition-opacity z-10"></div>
-                                                <img src={`https://picsum.photos/400/250?random=${i}`} alt="Article" className="w-full h-full object-cover liquid-img" />
-                                            </div>
-                                            <div className="p-8 flex-grow">
-                                                <span className="text-xs font-bold tracking-widest text-[#F59E0B] uppercase mb-2 block">Insights</span>
-                                                <h3 className="text-xl font-bold mb-3 text-white uppercase group-hover:text-[#F59E0B] transition-colors line-clamp-2">Importers achieve cost savings through better supply chain.</h3>
-                                                <p className="text-sm text-gray-400 mb-4 font-mono">Jun 20, 2024</p>
-                                            </div>
-                                        </div>
-                                    </AnimatedSection>
-                                ))}
-                            </div>
-                            <AnimatedSection delay={400} type="scale">
-                                <div>
-                                    <Magnetic>
-                                        <button className="mt-16 bg-transparent border-2 border-[#16A34A] text-[#16A34A] hover:bg-[#16A34A] hover:text-white font-bold py-3 px-10 rounded-full transition-all duration-300 text-lg cursor-hover">{t('common.view_all_news')}</button>
-                                    </Magnetic>
-                                </div>
-                            </AnimatedSection>
                         </div>
                     </section>
 
@@ -676,36 +833,6 @@ const Services: React.FC = () => {
                                         </div>
                                     </div>
                                 </AnimatedSection>
-                            </div>
-                        </div>
-                    </section>
-
-                    {/* Testimonials (What People Say) Section */}
-                    <section className="py-24 md:py-32 bg-transparent transition-colors duration-300">
-                        <div className="container mx-auto px-4 md:px-6">
-                            <AnimatedSection type="fade-up">
-                                <div className="text-center mb-24">
-                                    <span className="text-fastway-orange font-secondary font-bold text-sm uppercase tracking-wider">{t('home.testimonials_badge')}</span>
-                                    <h2 className="text-4xl md:text-5xl uppercase font-black text-white mt-3 tracking-tight">{t('home.testimonials_title')}</h2>
-                                </div>
-                            </AnimatedSection>
-
-                            <div className="grid md:grid-cols-3 gap-8 gap-y-16">
-                                {testimonialsData.map((item, index) => (
-                                    <AnimatedSection key={index} delay={index * 150} type="fade-up">
-                                        <div className="bg-[#0A3A20]/80 p-8 pt-16 rounded-xl shadow-xl hover:shadow-2xl transition-all duration-300 relative text-center group border border-white/10">
-                                            {/* Floating Avatar */}
-                                            <div className="absolute -top-12 left-1/2 transform -translate-x-1/2">
-                                                <div className="w-24 h-24 rounded-full border-4 border-[#0A3A20] shadow-lg overflow-hidden group-hover:scale-110 transition-transform duration-500">
-                                                    <img src={item.image} alt={item.name} className="w-full h-full object-cover" />
-                                                </div>
-                                            </div>
-                                            <p className="text-gray-300 mb-8 italic leading-relaxed text-lg">"{item.quote}"</p>
-                                            <h4 className="font-bold text-lg uppercase text-white tracking-wide">{item.name}</h4>
-                                            <p className="text-sm text-fastway-orange font-medium mt-1 uppercase tracking-wider opacity-80">{item.role}</p>
-                                        </div>
-                                    </AnimatedSection>
-                                ))}
                             </div>
                         </div>
                     </section>

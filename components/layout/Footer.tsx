@@ -1,9 +1,13 @@
 
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link as RouterLink } from 'react-router-dom';
 import { MapPin, Mail, Phone } from 'lucide-react';
+import { useLanguage } from '../../contexts/LanguageContext';
+import Logo from '../ui/Logo';
 
 const Footer: React.FC = () => {
+  const { t } = useLanguage();
+
   return (
     <footer className="bg-[#0A3A20] text-white pt-20 pb-8 border-t border-white/10">
       <div className="container mx-auto px-6 lg:px-12">
@@ -11,22 +15,16 @@ const Footer: React.FC = () => {
           
           {/* Column 1: Brand & Social */}
           <div className="space-y-6">
-            <div className="flex items-center gap-3">
-              <div className="w-10 h-10 bg-[#16A34A] rounded-lg flex items-center justify-center">
-                <svg className="w-6 h-6 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M2 12l10-5 10 5-10 5z" />
-                  <path d="M2 17l10 5 10-5" />
-                  <path d="M2 7l10 5 10-5" />
-                </svg>
-              </div>
-              <div>
-                <div className="font-bold text-xl leading-none tracking-wide text-white">MEGAPLUS</div>
-                <div className="text-[#F59E0B] text-xs font-bold tracking-widest mt-1">AGRI VIETNAM</div>
+            <div className="flex items-center gap-4">
+              <Logo className="w-16 h-16 text-white flex-shrink-0" />
+              <div className="flex flex-col justify-center">
+                <div className="font-bold text-2xl leading-none tracking-wide text-white">MEGAPLUS</div>
+                <div className="text-[#F59E0B] text-xs font-bold tracking-widest mt-1.5">AGRI VIETNAM</div>
               </div>
             </div>
             
             <p className="text-gray-300 text-sm leading-relaxed max-w-xs">
-              Connecting Vietnam's finest harvests to the global market. Your trusted B2B partner for premium agricultural exports.
+              {t('footer.desc')}
             </p>
             
             <div className="flex items-center gap-3">
@@ -52,51 +50,59 @@ const Footer: React.FC = () => {
 
           {/* Column 2: Quick Links */}
           <div>
-            <h3 className="text-lg font-bold text-white mb-6">Quick Links</h3>
+            <h3 className="text-lg font-bold text-white mb-6">{t('footer.quick_links')}</h3>
             <ul className="space-y-4">
-              <li><Link to="/" className="text-gray-300 hover:text-[#F59E0B] transition-colors text-sm">Home</Link></li>
-              <li><Link to="/about" className="text-gray-300 hover:text-[#F59E0B] transition-colors text-sm">About Us</Link></li>
-              <li><Link to="/products" className="text-gray-300 hover:text-[#F59E0B] transition-colors text-sm">Products</Link></li>
-              <li><Link to="/services" className="text-gray-300 hover:text-[#F59E0B] transition-colors text-sm">Services</Link></li>
-              <li><Link to="/quality" className="text-gray-300 hover:text-[#F59E0B] transition-colors text-sm">Quality</Link></li>
-              <li><Link to="/contact" className="text-gray-300 hover:text-[#F59E0B] transition-colors text-sm">Contact</Link></li>
+              <li><RouterLink to="/" className="text-gray-300 hover:text-[#F59E0B] transition-colors text-sm">{t('footer.home')}</RouterLink></li>
+              <li><RouterLink to="/about" className="text-gray-300 hover:text-[#F59E0B] transition-colors text-sm">{t('footer.about')}</RouterLink></li>
+              <li><RouterLink to="/products" className="text-gray-300 hover:text-[#F59E0B] transition-colors text-sm">{t('nav.products')}</RouterLink></li>
+              <li><RouterLink to="/services" className="text-gray-300 hover:text-[#F59E0B] transition-colors text-sm">{t('footer.services')}</RouterLink></li>
+              <li><RouterLink to="/contact" className="text-gray-300 hover:text-[#F59E0B] transition-colors text-sm">{t('footer.contact')}</RouterLink></li>
             </ul>
           </div>
 
           {/* Column 3: Our Products */}
           <div>
-            <h3 className="text-lg font-bold text-white mb-6">Our Products</h3>
+            <h3 className="text-lg font-bold text-white mb-6">{t('footer.our_products')}</h3>
             <ul className="space-y-4">
-              <li><Link to="/products" className="text-gray-300 hover:text-[#F59E0B] transition-colors text-sm">Fresh Young Coconut</Link></li>
-              <li><Link to="/products" className="text-gray-300 hover:text-[#F59E0B] transition-colors text-sm">Premium Vietnamese Rice</Link></li>
-              <li><Link to="/products" className="text-gray-300 hover:text-[#F59E0B] transition-colors text-sm">Fresh Tropical Fruits</Link></li>
-              <li><Link to="/products" className="text-gray-300 hover:text-[#F59E0B] transition-colors text-sm">IQF Frozen Fruits</Link></li>
-              <li><Link to="/products" className="text-gray-300 hover:text-[#F59E0B] transition-colors text-sm">Soft Dried Fruits</Link></li>
+              <li><RouterLink to="/products" className="text-gray-300 hover:text-[#F59E0B] transition-colors text-sm">{t('products.cat_fresh')}</RouterLink></li>
+              <li><RouterLink to="/products" className="text-gray-300 hover:text-[#F59E0B] transition-colors text-sm">{t('products.cat_spices')}</RouterLink></li>
+              <li><RouterLink to="/products" className="text-gray-300 hover:text-[#F59E0B] transition-colors text-sm">{t('products.cat_iqf')}</RouterLink></li>
+              <li><RouterLink to="/products" className="text-gray-300 hover:text-[#F59E0B] transition-colors text-sm">{t('products.cat_saydeo')}</RouterLink></li>
+              <li><RouterLink to="/products" className="text-gray-300 hover:text-[#F59E0B] transition-colors text-sm">{t('products.cat_coffee')}</RouterLink></li>
             </ul>
           </div>
 
           {/* Column 4: Contact Info */}
           <div>
-            <h3 className="text-lg font-bold text-white mb-6">Contact Info</h3>
+            <h3 className="text-lg font-bold text-white mb-6">{t('footer.contact_info')}</h3>
             <ul className="space-y-6">
               <li className="flex items-start gap-3">
                 <MapPin className="w-5 h-5 text-[#F59E0B] flex-shrink-0 mt-0.5" />
                 <span className="text-gray-300 text-sm leading-relaxed">
-                  123 Agricultural District<br />
-                  Ho Chi Minh City, Vietnam
+                  {t('footer.head_office_address')}
                 </span>
               </li>
-              <li className="flex items-center gap-3">
-                <Mail className="w-5 h-5 text-[#F59E0B] flex-shrink-0" />
-                <a href="mailto:info@megaplusagri.vn" className="text-gray-300 hover:text-[#F59E0B] transition-colors text-sm">
-                  info@megaplusagri.vn
-                </a>
+              <li className="flex items-start gap-3">
+                <Mail className="w-5 h-5 text-[#F59E0B] flex-shrink-0 mt-1" />
+                <div className="flex flex-col">
+                  <a href="mailto:info@megaplusvn.com" className="text-gray-300 hover:text-[#F59E0B] transition-colors text-sm">
+                    info@megaplusvn.com
+                  </a>
+                  <a href="mailto:sales@megaplusvn.com" className="text-gray-300 hover:text-[#F59E0B] transition-colors text-sm">
+                    sales@megaplusvn.com
+                  </a>
+                </div>
               </li>
-              <li className="flex items-center gap-3">
-                <Phone className="w-5 h-5 text-[#F59E0B] flex-shrink-0" />
-                <a href="tel:+842812345678" className="text-gray-300 hover:text-[#F59E0B] transition-colors text-sm">
-                  +84 28 1234 5678
-                </a>
+              <li className="flex items-start gap-3">
+                <Phone className="w-5 h-5 text-[#F59E0B] flex-shrink-0 mt-1" />
+                <div className="flex flex-col">
+                  <a href="tel:+84707793068" className="text-gray-300 hover:text-[#F59E0B] transition-colors text-sm">
+                    +84 707793068
+                  </a>
+                  <a href="tel:+84708697920" className="text-gray-300 hover:text-[#F59E0B] transition-colors text-sm">
+                    +84 708697920
+                  </a>
+                </div>
               </li>
             </ul>
           </div>
@@ -106,11 +112,11 @@ const Footer: React.FC = () => {
         {/* Bottom Bar */}
         <div className="pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-gray-400 text-sm">
-            © 2024 MEGAPLUS AGRI VIETNAM. All rights reserved.
+            {t('footer.rights')}
           </p>
           <div className="flex items-center gap-6">
-            <a href="#" className="text-gray-400 hover:text-white transition-colors text-sm">Privacy Policy</a>
-            <a href="#" className="text-gray-400 hover:text-white transition-colors text-sm">Terms of Service</a>
+            <a href="#" className="text-gray-400 hover:text-white transition-colors text-sm">{t('footer.privacy')}</a>
+            <a href="#" className="text-gray-400 hover:text-white transition-colors text-sm">{t('footer.terms_of_service')}</a>
           </div>
         </div>
       </div>
