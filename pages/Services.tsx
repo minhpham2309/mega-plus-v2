@@ -22,6 +22,7 @@ import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { servicesDropdownData, ServiceCategory, ServiceItem } from '../constants/servicesDropdownData';
+import serviceBg from '@/assets/service-backround.webp';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -457,19 +458,16 @@ const Services: React.FC = () => {
                             }}
                         ></div>
 
-                        {/* Grid Pattern Overlay */}
-                        <div 
-                            className="absolute inset-0 opacity-5 pointer-events-none" 
-                            style={{ backgroundImage: 'linear-gradient(#22C55E 1px, transparent 1px), linear-gradient(90deg, #22C55E 1px, transparent 1px)', backgroundSize: '40px 40px' }}
-                        ></div>
 
-                        {/* Cargo Ship & Port Image on the right with smooth fade-out gradient */}
-                        <div className="absolute top-0 right-0 w-full md:w-[55%] h-full z-0 opacity-25 pointer-events-none md:block hidden">
-                            <div className="absolute inset-0 bg-gradient-to-r from-[#021208] via-[#021208]/60 to-transparent z-10"></div>
+
+                        {/* Cargo Ship & Port Image (service-backround.png) with deep forest green / twilight cinematic overlays */}
+                        <div className="absolute inset-0 w-full h-full z-0 opacity-35 pointer-events-none">
+                            <div className="absolute inset-0 bg-gradient-to-b from-[#021208]/80 via-transparent to-[#021208] z-10"></div>
                             <img 
-                                src="https://images.unsplash.com/photo-1578575437130-527eed3abbec?auto=format&fit=crop&q=80&w=1200" 
+                                src={serviceBg} 
                                 alt="Cargo Port"
                                 className="hero-bg-img w-full h-full object-cover mix-blend-luminosity"
+                                referrerPolicy="no-referrer"
                             />
                         </div>
                     </div>
