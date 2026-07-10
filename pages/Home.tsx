@@ -3,6 +3,8 @@ import { Link, useLocation } from 'react-router-dom';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { UserCheck, Leaf, Activity, Sprout, Globe, ArrowLeftRight, ShieldCheck, Award, Handshake } from 'lucide-react';
+import mangoRmbg from '@/assets/mango-rmbg.webp';
 import AboutSection from '../components/sections/home/AboutSection';
 import ProductsSection from '../components/sections/home/ProductsSection';
 import ServicesSection from '../components/sections/home/ServicesSection';
@@ -126,48 +128,175 @@ const Home: React.FC = () => {
                     </div>
                     
                     {/* Right Content - Cards */}
-                    <div className="hero-right-card relative lg:ml-auto w-full max-w-lg">
-                        <div className="flex bg-[#16A34A] rounded-3xl overflow-hidden shadow-2xl relative">
-                            {/* Left Panel */}
-                            <div className="flex-1 p-10 flex flex-col items-center justify-center text-center border-r border-white/10">
-                                <div className="w-16 h-16 bg-white/10 rounded-2xl flex items-center justify-center mb-4 backdrop-blur-md">
-                                    <svg className="w-8 h-8 text-[#F59E0B]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19 11L12 15l-7-4m14-4l-7 4-7-4m14 8l-7 4-7-4" />
-                                    </svg>
+                    <div className="hero-right-card relative lg:ml-auto w-full max-w-xl xl:max-w-2xl z-20">
+                        {/* Top Trust Metrics */}
+                        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 sm:gap-6 mb-8 border-b border-white/10 pb-6">
+                            {/* Item 1: Years Experience */}
+                            <div className="flex items-center gap-3">
+                                <div className="w-10 h-10 rounded-full border border-green-500/20 bg-green-950/40 flex items-center justify-center text-green-400 shrink-0 shadow-[0_0_12px_rgba(22,163,74,0.15)]">
+                                    <UserCheck className="w-4 h-4 text-[#16A34A]" />
                                 </div>
-                                <span className="text-white font-medium">{t('home.card_farms')}</span>
+                                <div className="flex flex-col">
+                                    <h4 className="text-white font-bold text-xs leading-none tracking-wide uppercase">{t('home.stat_years')}</h4>
+                                    <p className="text-gray-400 text-[11px] mt-1 font-medium">{t('home.stat_years_desc')}</p>
+                                </div>
+                            </div>
+
+                            {/* Vertical divider on desktop, horizontal on mobile */}
+                            <div className="hidden sm:block w-[1px] h-8 bg-white/10"></div>
+
+                            {/* Item 2: Countless Served */}
+                            <div className="flex items-center gap-3">
+                                <div className="w-10 h-10 rounded-full border border-green-500/20 bg-green-950/40 flex items-center justify-center text-green-400 shrink-0 shadow-[0_0_12px_rgba(22,163,74,0.15)]">
+                                    <Leaf className="w-4 h-4 text-[#16A34A]" />
+                                </div>
+                                <div className="flex flex-col">
+                                    <h4 className="text-white font-bold text-xs leading-none tracking-wide uppercase">{t('home.stat_served_title')}</h4>
+                                    <p className="text-gray-400 text-[11px] mt-1 font-medium">{t('home.stat_served_desc')}</p>
+                                </div>
+                            </div>
+
+                            {/* Vertical divider on desktop, horizontal on mobile */}
+                            <div className="hidden sm:block w-[1px] h-8 bg-white/10"></div>
+
+                            {/* Item 3: Tons Exported */}
+                            <div className="flex items-center gap-3">
+                                <div className="w-10 h-10 rounded-full border border-green-500/20 bg-green-950/40 flex items-center justify-center text-green-400 shrink-0 shadow-[0_0_12px_rgba(22,163,74,0.15)]">
+                                    <Activity className="w-4 h-4 text-[#16A34A]" />
+                                </div>
+                                <div className="flex flex-col">
+                                    <h4 className="text-white font-bold text-xs leading-none tracking-wide uppercase">{t('home.stat_tons')}</h4>
+                                    <p className="text-gray-400 text-[11px] mt-1 font-medium">{t('home.stat_tons_desc')}</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        {/* Main B2B Split Card */}
+                        <div className="relative bg-[#0d1f12] rounded-[32px] shadow-2xl border border-white/10 flex flex-col md:flex-row h-auto md:h-[300px] mb-8 overflow-visible">
+                            {/* Left Panel - Premium Farms */}
+                            <div className="flex-1 rounded-t-[32px] md:rounded-tr-none md:rounded-l-[31px] relative overflow-hidden group min-h-[220px] md:min-h-0 flex flex-col justify-between p-8 md:p-10 border-b md:border-b-0 md:border-r border-white/10">
+                                {/* Background image & gradient overlay */}
+                                <div className="absolute inset-0 z-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105" 
+                                     style={{ backgroundImage: `url('https://images.unsplash.com/photo-1589308078059-be1415eab4c3?q=80&w=800&auto=format&fit=crop')` }} />
+                                <div className="absolute inset-0 z-0 bg-gradient-to-t from-emerald-950/95 via-emerald-950/80 to-emerald-950/50" />
+                                
+                                <div className="relative z-10 flex flex-col items-start">
+                                    {/* Gold Plant Badge Icon */}
+                                    <div className="w-11 h-11 rounded-xl bg-emerald-950/90 border border-amber-500/40 flex items-center justify-center shadow-lg mb-6 backdrop-blur-md">
+                                        <Sprout className="w-5 h-5 text-amber-500" />
+                                    </div>
+                                    
+                                    {/* Headline */}
+                                    <h3 className="text-white font-bold text-2xl md:text-3xl tracking-tight leading-none mb-1 text-left">
+                                        PREMIUM<br />FARMS
+                                    </h3>
+                                    
+                                    {/* Subtitle */}
+                                    <p className="text-gray-300 text-xs md:text-[13px] mt-2 font-medium leading-relaxed max-w-[200px] text-left">
+                                        {t('home.farms_subtitle')}
+                                    </p>
+                                </div>
+                            </div>
+
+                            {/* Right Panel - Global Logistics */}
+                            <div className="flex-1 rounded-b-[32px] md:rounded-bl-none md:rounded-r-[31px] relative overflow-hidden group min-h-[220px] md:min-h-0 flex flex-col justify-between p-8 md:p-10">
+                                {/* Background image & gradient overlay */}
+                                <div className="absolute inset-0 z-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105" 
+                                     style={{ backgroundImage: `url('https://images.unsplash.com/photo-1518241353330-0f7941c2d9b5?q=80&w=800&auto=format&fit=crop')` }} />
+                                <div className="absolute inset-0 z-0 bg-gradient-to-t from-slate-950/95 via-slate-950/80 to-slate-950/50" />
+                                
+                                <div className="relative z-10 flex flex-col items-start md:items-end md:text-right">
+                                    {/* Gold Globe Badge Icon */}
+                                    <div className="w-11 h-11 rounded-xl bg-slate-950/90 border border-amber-500/40 flex items-center justify-center shadow-lg mb-6 backdrop-blur-md">
+                                        <Globe className="w-5 h-5 text-amber-500" />
+                                    </div>
+                                    
+                                    {/* Headline */}
+                                    <h3 className="text-white font-bold text-2xl md:text-3xl tracking-tight leading-none mb-1">
+                                        GLOBAL<br />LOGISTICS
+                                    </h3>
+                                    
+                                    {/* Subtitle */}
+                                    <p className="text-gray-300 text-xs md:text-[13px] mt-2 font-medium leading-relaxed max-w-[200px]">
+                                        {t('home.logistics_subtitle')}
+                                    </p>
+                                </div>
                             </div>
                             
-                            {/* Right Panel */}
-                            <div className="flex-1 p-10 flex flex-col items-center justify-center text-center bg-[#15803D]">
-                                <div className="w-16 h-16 bg-white/10 rounded-2xl flex items-center justify-center mb-4 backdrop-blur-md">
-                                    <svg className="w-8 h-8 text-[#F59E0B]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M13 10V3L4 14h7v7l9-11h-7z" />
-                                    </svg>
-                                </div>
-                                <span className="text-white font-medium">{t('home.card_logistics')}</span>
+                            {/* Floating Mangoes (transparent bg-removed) */}
+                            <div className="absolute -bottom-10 -left-6 sm:-bottom-12 sm:-left-8 z-30 pointer-events-none select-none">
+                                <img 
+                                    src={mangoRmbg} 
+                                    alt="Premium Mangoes" 
+                                    className="w-28 h-28 sm:w-36 sm:h-36 md:w-40 md:h-40 object-contain drop-shadow-[0_15px_15px_rgba(0,0,0,0.6)] rotate-[-12deg]"
+                                    referrerPolicy="no-referrer"
+                                />
                             </div>
                             
-                            {/* Center Button */}
-                            <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
-                                <div className="w-20 h-20 bg-[#F59E0B] rounded-full flex flex-col items-center justify-center shadow-lg border-4 border-[#16A34A] z-10">
-                                    <svg className="w-6 h-6 text-black mb-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4" />
-                                    </svg>
-                                    <span className="text-black font-bold text-xs">B2B</span>
+                            {/* Center Button - B2B Connection hub */}
+                            <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-30">
+                                <div className="w-20 h-20 rounded-full border-[3px] border-amber-500/80 bg-neutral-950/90 flex flex-col items-center justify-center shadow-[0_0_25px_rgba(245,158,11,0.4)] backdrop-blur-md">
+                                    <div className="w-16 h-16 rounded-full border border-amber-500/30 flex flex-col items-center justify-center">
+                                        <ArrowLeftRight className="w-5 h-5 text-amber-500 mb-0.5" />
+                                        <span className="text-amber-500 font-extrabold text-xs tracking-wider">B2B</span>
+                                    </div>
                                 </div>
                             </div>
+
+                            {/* Floating Mango Card - Top Right of B2B Card */}
+                            <div className="floating-element absolute -top-8 -right-4 md:-top-10 md:-right-6 w-16 h-16 md:w-20 md:h-20 bg-amber-500 rounded-2xl md:rounded-[24px] shadow-[0_12px_28px_rgba(245,158,11,0.55)] flex items-center justify-center rotate-12 z-30 overflow-hidden border border-amber-400">
+                                <img 
+                                    src="https://images.unsplash.com/photo-1553279768-865429fa0078?q=80&w=150&auto=format&fit=crop" 
+                                    alt="Mango" 
+                                    className="w-12 h-12 md:w-16 md:h-16 object-contain rounded-xl"
+                                    referrerPolicy="no-referrer"
+                                />
+                            </div>
                         </div>
-                        
-                        {/* Floating Elements */}
-                        <div className="floating-element absolute -top-8 right-12 w-16 h-16 bg-[#F59E0B] rounded-2xl shadow-xl flex items-center justify-center rotate-12">
-                            <span className="text-2xl">🥭</span>
+
+                        {/* Bottom Tagline */}
+                        <div className="flex items-center justify-center gap-4 mb-6">
+                            <div className="h-[1px] flex-1 bg-gradient-to-r from-transparent to-amber-500/40"></div>
+                            <span className="text-[#F59E0B] text-xs font-bold tracking-[0.2em] uppercase whitespace-nowrap">
+                                {t('home.about_us_bottom_brand')}
+                            </span>
+                            <div className="h-[1px] flex-1 bg-gradient-to-l from-transparent to-amber-500/40"></div>
                         </div>
-                        <div className="floating-element absolute -bottom-6 -right-6 w-14 h-14 bg-[#15803D] rounded-2xl shadow-xl flex items-center justify-center -rotate-12">
-                            <span className="text-2xl">🍍</span>
-                        </div>
-                        <div className="floating-element absolute -bottom-12 left-8 w-12 h-12 bg-[#16A34A] rounded-2xl shadow-xl flex items-center justify-center rotate-45">
-                            <span className="text-xl">🌾</span>
+
+                        {/* Bottom Trust Badges */}
+                        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                            {/* Badge 1: Reliable Supply */}
+                            <div className="flex items-center gap-3 bg-green-950/20 hover:bg-green-950/30 border border-white/5 hover:border-white/10 p-3 rounded-2xl transition-all duration-300">
+                                <div className="w-8 h-8 rounded-full border border-green-500/20 bg-green-950/30 flex items-center justify-center text-green-400 shrink-0">
+                                    <ShieldCheck className="w-4 h-4 text-green-400" />
+                                </div>
+                                <div className="flex flex-col">
+                                    <span className="text-white font-semibold text-xs leading-none">{t('home.about_us_bottom_1_title')}</span>
+                                    <span className="text-gray-400 text-[10px] mt-1">{t('home.about_us_bottom_1_desc')}</span>
+                                </div>
+                            </div>
+
+                            {/* Badge 2: Premium Quality */}
+                            <div className="flex items-center gap-3 bg-green-950/20 hover:bg-green-950/30 border border-white/5 hover:border-white/10 p-3 rounded-2xl transition-all duration-300">
+                                <div className="w-8 h-8 rounded-full border border-green-500/20 bg-green-950/30 flex items-center justify-center text-green-400 shrink-0">
+                                    <Award className="w-4 h-4 text-green-400" />
+                                </div>
+                                <div className="flex flex-col">
+                                    <span className="text-white font-semibold text-xs leading-none">{t('home.about_us_bottom_2_title')}</span>
+                                    <span className="text-gray-400 text-[10px] mt-1">{t('home.about_us_bottom_2_desc')}</span>
+                                </div>
+                            </div>
+
+                            {/* Badge 3: Long-term Partnership */}
+                            <div className="flex items-center gap-3 bg-green-950/20 hover:bg-green-950/30 border border-white/5 hover:border-white/10 p-3 rounded-2xl transition-all duration-300">
+                                <div className="w-8 h-8 rounded-full border border-green-500/20 bg-green-950/30 flex items-center justify-center text-green-400 shrink-0">
+                                    <Handshake className="w-4 h-4 text-green-400" />
+                                </div>
+                                <div className="flex flex-col">
+                                    <span className="text-white font-semibold text-xs leading-none">{t('home.about_us_bottom_3_title')}</span>
+                                    <span className="text-gray-400 text-[10px] mt-1">{t('home.about_us_bottom_3_desc')}</span>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
